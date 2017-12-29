@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var PapersSchema = new Schema({
   id: {
-    type: Number
+    type: String
   },
   title: {
     type: String
@@ -25,10 +25,10 @@ var PapersSchema = new Schema({
     }]
   },
   inCitations: {
-    type: [Number]
+    type: [String]
   },
   outCitations: {
-    type: [Number]
+    type: [String]
   },
   year: {
     type: Number
