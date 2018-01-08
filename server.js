@@ -1,6 +1,5 @@
 var express = require('express'),
   app = express(),
-  cors = require('cors'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Task = require('./api/models/paperModel'), //created model loading here
@@ -8,9 +7,7 @@ var express = require('express'),
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/pdsdb', {
-  useMongoClient: true,
-}); 
+mongoose.connect('mongodb://localhost/pdsdb'); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

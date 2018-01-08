@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Paper = mongoose.model('Papers');
 
 exports.list_all_papers = function (req, res) {
-    console.log("get all papers");
+    //console.log("get all papers");
     Paper.find({}, function (err, paper) {
         if (err)
             res.send(err);
@@ -10,9 +10,18 @@ exports.list_all_papers = function (req, res) {
     }).limit(40);
 };
 
+exports.list_papers = function (req, res) {
+    var list = req.body;
+    console.log("-- get all papers : " + list + " --");
+    Paper.find({ 'id': { $in: list.inCitationstab} }, function (err, paper) {
+        console.log(paper);
+        res.json(paper);
+    }).limit(5);
+};
+
 exports.search = function (req, res) {
-    console.log("search for paper");
     var mot = req.body;
+    console.log("search for paper : " + mot);
     Paper.find({ $text: { $search: mot.search } }, { score: { $meta: "textScore" } }, function (err, paper) {
         res.json(paper);
     }).limit(5);
