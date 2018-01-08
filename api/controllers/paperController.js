@@ -12,8 +12,9 @@ exports.list_all_papers = function (req, res) {
 
 exports.list_papers = function (req, res) {
     var list = req.body;
-    console.log("-- get all papers : " + list + " --");
-    Paper.find({ 'id': { $in: list.inCitationstab} }, function (err, paper) {
+    console.log("-- get list of papers : " + req.body + " --");
+    console.log(req.body);
+    Paper.find({ 'id': { $in: list.list} }, function (err, paper) {
         console.log(paper);
         res.json(paper);
     }).limit(5);
