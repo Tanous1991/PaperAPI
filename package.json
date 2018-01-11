@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "file-save": "^0.2.0",
     "mongoose": "^5.0.0-rc2"
   }
 }
